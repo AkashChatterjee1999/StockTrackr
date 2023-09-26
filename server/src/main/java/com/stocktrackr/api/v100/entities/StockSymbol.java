@@ -24,7 +24,7 @@ public class StockSymbol {
     @Column(name = "region", nullable = false) private String region;
     @Column(name = "gmtMarketOpenTime", nullable = false)  private Date gmtMarketOpenTime;
     @Column(name = "gmtMarketCloseTime", nullable = false) private Date gmtMarketCloseTime;
-    @Column(name = "gmtMarketCloseTime", nullable = false) private TimeZone timezone;
+    @Column(name = "marketTimezone", nullable = false) private TimeZone timezone;
     @Column(name = "stockType", nullable = false) private StockType stockType;
     @Column(name = "currency", nullable = false) private String currency;
     @Column(name = "createdAt", nullable = false) @CreationTimestamp private Date createdAt;
