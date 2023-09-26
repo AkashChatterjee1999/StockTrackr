@@ -1,24 +1,40 @@
 package com.stocktrackr.api.v100.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.stocktrackr.api.v100.socket.SocketMapping;
+import com.stocktrackr.api.v100.socket.StockTrackrSocketHandler;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketMessage;
 
-@RestController
-@RequestMapping(path = "/api/v1/insights")
+import java.io.IOException;
+
 public class InsightControllers {
 
-    @GetMapping(path = "/detailed")
-    public void getDetailedInsights() {}
+    @SocketMapping(path = "/socket-api/v1/insights/detailed")
+    public void getDetailedInsights(String URI, WebSocketMessage<?> message) throws IOException {
+        WebSocketMessage<?> ms = new TextMessage("hello world");
+        StockTrackrSocketHandler.socketMappings.get("/socket-api/v1/insights/detailed")
+                .getFirst().sendMessage(ms);
+    }
 
-    @GetMapping(path = "/crypto")
-    public void getCryptoInsightsRt() {}
+    @SocketMapping(path = "/socket-api/v1/insights/crypto")
+    public void getCryptoInsightsRt(String URI, WebSocketMessage<?> message) throws IOException {
+        WebSocketMessage<?> ms = new TextMessage("Hello sweet heart, Dipannita, My Tatun !!");
+        StockTrackrSocketHandler.socketMappings.get("/socket-api/v1/insights/crypto")
+                .getFirst().sendMessage(ms);
+    }
 
-    @GetMapping(path = "/stock")
-    public void getStocksInsightsRt() {}
+    @SocketMapping(path = "/socket-api/v1/insights/stock")
+    public void getStocksInsightsRt(String URI, WebSocketMessage<?> message) throws IOException {
+        WebSocketMessage<?> ms = new TextMessage("hello world");
+        StockTrackrSocketHandler.socketMappings.get("/socket-api/v1/insights/stock")
+                .getFirst().sendMessage(ms);
+    }
 
-    @GetMapping(path = "/stock/{stockSymbol}")
-    public void getStockCandleViewRt(@PathVariable String stockSymbol) {}
+    @SocketMapping(path = "/socket-api/v1/insights/stock/ohlc")
+    public void getStockCandleViewRt(String URI, WebSocketMessage<?> message) throws IOException {
+        WebSocketMessage<?> ms = new TextMessage("hello world");
+        StockTrackrSocketHandler.socketMappings.get("/socket-api/v1/insights/stock/ohlc")
+                .getFirst().sendMessage(ms);
+    }
 
 }
