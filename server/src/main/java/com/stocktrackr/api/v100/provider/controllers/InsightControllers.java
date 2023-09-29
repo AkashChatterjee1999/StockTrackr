@@ -1,7 +1,7 @@
-package com.stocktrackr.api.v100.controllers;
+package com.stocktrackr.api.v100.provider.controllers;
 
-import com.stocktrackr.api.v100.socket.SocketMapping;
-import com.stocktrackr.api.v100.socket.StockTrackrSocketHandler;
+import com.stocktrackr.api.v100.provider.socket.SocketMapping;
+import com.stocktrackr.api.v100.provider.socket.StockTrackrSocketHandler;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketMessage;
 

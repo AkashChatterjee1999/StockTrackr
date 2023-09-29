@@ -1,4 +1,4 @@
-package com.stocktrackr.api.v100.utils;
+package com.stocktrackr.api.v100.provider.utils;
 
 public class Pair<F, V> {
 

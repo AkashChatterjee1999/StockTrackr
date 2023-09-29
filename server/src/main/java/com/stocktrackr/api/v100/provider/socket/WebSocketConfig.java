@@ -1,15 +1,12 @@
-package com.stocktrackr.api.v100.socket;
+package com.stocktrackr.api.v100.provider.socket;
 
 
-import com.stocktrackr.api.v100.controllers.InsightControllers;
-import org.springframework.context.annotation.Bean;
+import com.stocktrackr.api.v100.provider.controllers.InsightControllers;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package com.stocktrackr.api.v100.entities;
+package com.stocktrackr.api.v100.provider.entities;
 
 
 import jakarta.persistence.*;
@@ -8,42 +8,44 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.util.Date;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "userStockSymbols")
+public class UserStockSymbol {
 
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long ID;
 
-    @Column(name = "emailID", nullable = false, unique = true) private String emailID;
-    @Column(name = "dateOfBirth") private Date dateOfBirth;
+    // foreign key
+    @Column(name = "stockSymbolID", nullable = false) private Long stockSymbolID;
+    // foreign key
+    @Column(name = "userID", nullable = false) private Long userID;
     @Column(name = "deactivatedAt") private Date deactivatedAt;
     @Column(name = "createdAt", nullable = false) @CreationTimestamp private Date createdAt;
     @Column(name = "updatedAt", nullable = false) @UpdateTimestamp private Date updatedAt;
 
-    public long getID() {
+    public long getId() {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setId(long ID) {
         this.ID = ID;
     }
 
-    public String getEmailID() {
-        return emailID;
+    public Long getStockSymbolID() {
+        return stockSymbolID;
     }
 
-    public void setEmailID(String emailID) {
-        this.emailID = emailID;
+    public void setStockSymbolID(Long stockSymbolID) {
+        this.stockSymbolID = stockSymbolID;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public Long getUserID() {
+        return userID;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
     public Date getDeactivatedAt() {
@@ -69,4 +71,7 @@ public class User {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+
+
 }

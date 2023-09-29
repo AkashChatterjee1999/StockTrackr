@@ -1,6 +1,6 @@
-package com.stocktrackr.api.v100.socket;
+package com.stocktrackr.api.v100.provider.socket;
 
-import com.stocktrackr.api.v100.utils.Pair;
+import com.stocktrackr.api.v100.provider.utils.Pair;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketMessage;

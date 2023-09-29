@@ -1,4 +1,4 @@
-package com.stocktrackr.api.v100.entities;
+package com.stocktrackr.api.v100.provider.entities;
 
 
 import jakarta.persistence.*;
@@ -8,8 +8,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.util.Date;
 
 @Entity
-@Table(name = "stockPrices")
-public class StockPrice {
+@Table(name = "stockPriceHistory")
+public class StockPriceHistory {
 
     @Column(name = "id")
     @Id
@@ -22,10 +22,11 @@ public class StockPrice {
     @Column(name = "highPrice", nullable = false) private float highPrice;
     @Column(name = "lowPrice", nullable = false) private float lowPrice;
     @Column(name = "currentPrice", nullable = false) private float currentPrice;
-    @Column(name = "percentChange", nullable = false) private float percentChange;
-    @Column(name = "previousClose", nullable = false) private float previousClose;
+    @Column(name = "percentChange") private float percentChange;
+    @Column(name = "previousClose") private float previousClose;
     @Column(name = "createdAt", nullable = false) @CreationTimestamp private Date createdAt;
     @Column(name = "updatedAt", nullable = false) @UpdateTimestamp private Date updatedAt;
+
 
     public long getID() {
         return ID;
@@ -106,6 +107,7 @@ public class StockPrice {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
 
 
 }

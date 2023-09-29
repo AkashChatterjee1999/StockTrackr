@@ -1,7 +1,7 @@
-package com.stocktrackr.api.v100.entities;
+package com.stocktrackr.api.v100.provider.entities;
 
-import com.stocktrackr.api.v100.enums.OrderStatus;
-import com.stocktrackr.api.v100.enums.OrderType;
+import com.stocktrackr.api.v100.provider.enums.OrderStatus;
+import com.stocktrackr.api.v100.provider.enums.OrderType;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

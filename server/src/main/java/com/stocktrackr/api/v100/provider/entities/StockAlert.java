@@ -1,4 +1,4 @@
-package com.stocktrackr.api.v100.entities;
+package com.stocktrackr.api.v100.provider.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;

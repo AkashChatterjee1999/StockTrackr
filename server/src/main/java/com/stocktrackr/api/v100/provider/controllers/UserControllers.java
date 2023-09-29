@@ -1,4 +1,4 @@
-package com.stocktrackr.api.v100.controllers;
+package com.stocktrackr.api.v100.provider.controllers;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

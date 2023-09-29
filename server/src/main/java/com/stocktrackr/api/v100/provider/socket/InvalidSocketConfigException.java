@@ -1,4 +1,4 @@
-package com.stocktrackr.api.v100.socket;
+package com.stocktrackr.api.v100.provider.socket;
 
 public class InvalidSocketConfigException extends Exception {
 
