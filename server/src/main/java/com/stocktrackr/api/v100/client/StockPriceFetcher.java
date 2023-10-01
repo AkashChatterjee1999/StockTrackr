@@ -1,13 +1,9 @@
 package com.stocktrackr.api.v100.client;
 
-import com.stocktrackr.api.v100.provider.messaging.KafkaMessageProducer;
-import com.stocktrackr.api.v100.provider.utils.Utils;
+import com.stocktrackr.api.v100.provider.realtimeServices.messaging.KafkaMessageProducer;
+import com.stocktrackr.api.v100.provider.domain.utils.Utils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.core.KafkaTemplate;
-
-import java.util.Arrays;
 
 public class StockPriceFetcher implements CurrentEntityPriceFetcher {
 
@@ -24,14 +20,12 @@ public class StockPriceFetcher implements CurrentEntityPriceFetcher {
 
     @Override
     public void run() {
-        while(true) {
-            StockPriceResoponse price = this.fetchPrice();
-            this.producer.sendMessage(this.kafkaTopicName, this.stockSymbol, price);
-        }
+        StockPriceResponse price = this.fetchPrice();
+        this.producer.sendMessage(this.kafkaTopicName, this.stockSymbol, price);
     }
 
     @Override
-    public StockPriceResoponse fetchPrice() {
+    public StockPriceResponse fetchPrice() {
         try {
             Document doc = Jsoup.connect("https://www.google.com/finance/quote/" + this.stockSymbol).get();
 
@@ -55,10 +49,10 @@ public class StockPriceFetcher implements CurrentEntityPriceFetcher {
             float lowPrice = Utils.sanitizeStringAndGetFloat(lowPriceStr);
             float deltaChange = (float) (Math.round(((currentPrice - previousClosePrice)/previousClosePrice)*100.0*100.0)/100.0);
 
-            return new StockPriceResoponse(currentPrice, previousClosePrice, highPrice, lowPrice, deltaChange, this.stockSymbol);
+            return new StockPriceResponse(currentPrice, previousClosePrice, highPrice, lowPrice, deltaChange, this.stockSymbol);
         } catch(Exception err) {
             err.printStackTrace();
-            return new StockPriceResoponse(0.00f, 0.00f, 0.00f, 0.00f, 0.00f, this.stockSymbol);
+            return new StockPriceResponse(0.00f, 0.00f, 0.00f, 0.00f, 0.00f, this.stockSymbol);
         }
     }
 
