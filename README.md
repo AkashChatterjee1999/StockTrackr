@@ -1,5 +1,6 @@
 # StockTrackr
-StockTrackr is a stock tracking/alerting application for financial enthusiasts
+StockTrackr is a stock tracking/alerting application for financial enthusiasts.
+
 Some of the notable features that will be provided.
 
 1. Users can log in and sign up
