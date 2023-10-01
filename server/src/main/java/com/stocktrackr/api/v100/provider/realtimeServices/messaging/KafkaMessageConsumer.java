@@ -5,13 +5,14 @@ import com.stocktrackr.api.v100.provider.realtimeServices.websocket.controllers.
 import com.stocktrackr.api.v100.provider.domain.utils.Pair;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@SpringBootApplication
+@Component
 public class KafkaMessageConsumer {
 
     private Map<String, Pair<Long, StockPriceResponse>> minuteInstancePriceCandle = new HashMap<>();
@@ -70,9 +71,9 @@ public class KafkaMessageConsumer {
         messageProcessor(in, KafkaMessageProducer.Topics.REGULAR_STOCK);
     }
 
-    @KafkaListener(id = "myGroup", topics = "CRYPTO")
-    public void regularCryptoPriceListener(String in) {
-        messageProcessor(in, KafkaMessageProducer.Topics.CRYPTO);
-    }
+//    @KafkaListener(id = "myGroup", topics = "CRYPTO")
+//    public void regularCryptoPriceListener(String in) {
+//        messageProcessor(in, KafkaMessageProducer.Topics.CRYPTO);
+//    }
 
 }

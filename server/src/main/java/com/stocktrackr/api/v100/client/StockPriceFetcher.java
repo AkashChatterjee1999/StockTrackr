@@ -12,7 +12,7 @@ public class StockPriceFetcher implements CurrentEntityPriceFetcher {
     private final KafkaMessageProducer.Topics kafkaTopicName;
     private final KafkaMessageProducer producer;
 
-    StockPriceFetcher(String stockSymbol, KafkaMessageProducer.Topics kafkaTopicName){
+    public StockPriceFetcher(String stockSymbol, KafkaMessageProducer.Topics kafkaTopicName){
         this.stockSymbol = stockSymbol;
         this.kafkaTopicName = kafkaTopicName;
         this.producer = KafkaMessageProducer.getInstance();

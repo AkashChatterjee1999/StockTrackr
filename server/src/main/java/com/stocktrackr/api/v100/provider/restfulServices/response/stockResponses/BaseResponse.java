@@ -4,10 +4,10 @@ import com.stocktrackr.api.v100.provider.domain.exceptions.StockTrackrBaseExcept
 
 public class BaseResponse<T> {
 
-    String status;
-    String errorCode;
-    String errorDescription;
-    T response;
+    public String status;
+    public String errorCode;
+    public String errorDescription;
+    public T response;
 
     BaseResponse(StockTrackrBaseException exception) {
         this.status = "ERROR";

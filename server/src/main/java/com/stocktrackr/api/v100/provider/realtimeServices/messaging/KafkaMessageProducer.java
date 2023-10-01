@@ -27,7 +27,7 @@ public class KafkaMessageProducer {
         );
     }
 
-    private KafkaMessageProducer(KafkaTemplate<String, String> kafkaTemplate) {
+    KafkaMessageProducer(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 

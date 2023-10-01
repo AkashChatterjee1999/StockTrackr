@@ -16,8 +16,6 @@ public class InsightControllers {
     private static HashMap<String, ArrayList<WebSocketSession>> entityPriceSubscribers = new HashMap<>();
     private static HashMap<String, ArrayList<WebSocketSession>> candleBarsSubscribers = new HashMap<>();
 
-    private InsightControllers(){}
-
     // provides realtime connection for getting stock price of any symbol
     @SocketMapping(path = "/realtime/v1/entityPrice")
     public void subscribeToEntityPrice(WebSocketSession session, WebSocketMessage<String> message) throws IOException {

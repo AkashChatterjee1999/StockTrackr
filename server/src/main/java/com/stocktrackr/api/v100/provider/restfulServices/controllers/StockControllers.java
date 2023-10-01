@@ -22,44 +22,35 @@ public class StockControllers {
     StockControllers(StockService stockServiceInstance) { this.stockServiceInstance = stockServiceInstance; }
 
     @GetMapping(path = "/symbols")
-    public BaseResponse<?> searchStockSymbols(@RequestParam(name = "like") String like) {
-        try {
-            if(like == null) like = "";
-            AllStockSymbolsResponse response = this.stockServiceInstance.searchStockSymbols(like.trim());
-            return new BaseResponse<>(response);
-
-        } catch(Exception err) {
-            if(err instanceof StockTrackrBaseException) return new BaseResponse<>(err);
-            else {
-                err.printStackTrace();
-                return new BaseResponse<>(AllStockTrackrExceptions.unexpectedError);
-            }
-        }
+    public BaseResponse<AllStockSymbolsResponse> getAllStockSymbols(@RequestParam(name = "like") @Nullable String ilike) {
+        if(ilike == null) ilike = "";
+        AllStockSymbolsResponse response = this.stockServiceInstance.searchStockSymbols(ilike.trim());
+        return new BaseResponse<>(response);
     }
 
     @PostMapping(path = "/subscribe")
-    public BaseResponse<?> subscribeStock(@RequestBody String stockSymbol) {}
+    public void subscribeStock(@RequestBody String stockSymbol) {}
 
     @GetMapping(path = "/subscribed")
-    public BaseResponse<?> getAllSubscribeStocks(@RequestBody String stockSymbol,
+    public void getAllSubscribeStocks(@RequestBody String stockSymbol,
                                                          @RequestParam(name = "stockType") @Nullable String stockType) {}
 
     @PostMapping(path = "/order")
-    public BaseResponse<?> createOrder(@RequestBody String stockSymbol, @RequestBody int quantity, @RequestBody OrderType orderType,
+    public void createOrder(@RequestBody String stockSymbol, @RequestBody int quantity, @RequestBody OrderType orderType,
                                              @RequestBody boolean isMarketPriceOrder, @RequestBody boolean isTargetedHigh,
                                              @RequestBody float targetedPrice) {}
 
     @GetMapping(path = "/order")
-    public BaseResponse<?> getOrders() {}
+    public void getOrders() {}
 
     @PutMapping(path = "/order/{orderID}/cancel")
-    public BaseResponse<?> cancelOrder(@PathVariable String orderID) {}
+    public void cancelOrder(@PathVariable String orderID) {}
 
     @PostMapping(path = "/alert")
-    public BaseResponse<?> registerStockAlert() {}
+    public void registerStockAlert() {}
 
     @PutMapping(path = "/alert/{alertID}")
-    public BaseResponse<?> updateStockAlert(@PathVariable String alertID, @RequestBody(required = false) Float priceForAlert,
+    public void updateStockAlert(@PathVariable String alertID, @RequestBody(required = false) Float priceForAlert,
                                                   @RequestBody(required = false) Boolean isGoDownAlert,
                                                   @RequestBody(required = false) Boolean toDeactivate) {}
 

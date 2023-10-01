@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -22,11 +23,12 @@ public class StockSymbol {
     @Column(name = "name", nullable = false) private String name;
     @Column(name = "symbol", nullable = false, unique = true) private String symbol;
     @Column(name = "region", nullable = false) private String region;
-    @Column(name = "gmtMarketOpenTime", nullable = false)  private Date gmtMarketOpenTime;
-    @Column(name = "gmtMarketCloseTime", nullable = false) private Date gmtMarketCloseTime;
+    @Column(name = "gmtMarketOpenTime", nullable = false)  private Time gmtMarketOpenTime;
+    @Column(name = "gmtMarketCloseTime", nullable = false) private Time gmtMarketCloseTime;
     @Column(name = "marketTimezone", nullable = false) private TimeZone timezone;
     @Column(name = "stockType", nullable = false) private StockType stockType;
     @Column(name = "currency", nullable = false) private String currency;
+    @Column(name = "sector", nullable = false) private String sector;
     @Column(name = "createdAt", nullable = false) @CreationTimestamp private Date createdAt;
     @Column(name = "updatedAt", nullable = false) @UpdateTimestamp private Date updatedAt;
 
@@ -66,7 +68,7 @@ public class StockSymbol {
         return gmtMarketOpenTime;
     }
 
-    public void setGmtMarketOpenTime(Date gmtMarketOpenTime) {
+    public void setGmtMarketOpenTime(Time gmtMarketOpenTime) {
         this.gmtMarketOpenTime = gmtMarketOpenTime;
     }
 
@@ -74,7 +76,7 @@ public class StockSymbol {
         return gmtMarketCloseTime;
     }
 
-    public void setGmtMarketCloseTime(Date gmtMarketCloseTime) {
+    public void setGmtMarketCloseTime(Time gmtMarketCloseTime) {
         this.gmtMarketCloseTime = gmtMarketCloseTime;
     }
 
@@ -100,6 +102,14 @@ public class StockSymbol {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
     }
 
     public Date getCreatedAt() {
